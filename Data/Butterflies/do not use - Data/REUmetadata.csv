@@ -1,0 +1,169 @@
+island,site,length,date,type,species,number
+saipan,ladtd,300,28-Jun-13,disturbed,euploa eunice,58
+saipan,ladtd,300,28-Jun-13,disturbed,eurema blanda,2
+saipan,ladtd,300,28-Jun-13,disturbed,papilio polytes,0
+saipan,ladtd,300,28-Jun-13,disturbed,hypolymnas bolina,2
+saipan,ladtd,300,28-Jun-13,disturbed,hypolymnas anomola,0
+saipan,ladtd,300,28-Jun-13,disturbed,catopsilia pomona,0
+saipan,ladtd,300,28-Jun-13,disturbed,melanitis leda,0
+saipan,ladtd,300,28-Jun-13,disturbed,unidentified,1
+saipan,ladtn,300,28-Jun-13,native,euploa eunice,0
+saipan,ladtn,300,28-Jun-13,native,eurema blanda,0
+saipan,ladtn,300,28-Jun-13,native,papilio polytes,0
+saipan,ladtn,300,28-Jun-13,native,hypolymnas bolina,0
+saipan,ladtn,300,28-Jun-13,native,hypolymnas anomola,0
+saipan,ladtn,300,28-Jun-13,native,catopsilia pomona,0
+saipan,ladtn,300,28-Jun-13,native,melanitis leda,0
+saipan,ladtn,300,28-Jun-13,native,unidentified,0
+saipan,naftan,300,29-Jun-13,disturbed,euploa eunice,0
+saipan,naftan,300,29-Jun-13,disturbed,eurema blanda,0
+saipan,naftan,300,29-Jun-13,disturbed,papilio polytes,0
+saipan,naftan,300,29-Jun-13,disturbed,hypolymnas bolina,4
+saipan,naftan,300,29-Jun-13,disturbed,hypolymnas anomola,0
+saipan,naftan,300,29-Jun-13,disturbed,catopsilia pomona,0
+saipan,naftan,300,29-Jun-13,disturbed,melanitis leda,0
+saipan,naftan,300,29-Jun-13,disturbed,unidentified,0
+saipan,forbi,300,29-Jun-13,native,euploa eunice,3
+saipan,forbi,300,29-Jun-13,native,eurema blanda,0
+saipan,forbi,300,29-Jun-13,native,papilio polytes,1
+saipan,forbi,300,29-Jun-13,native,hypolymnas bolina,0
+saipan,forbi,300,29-Jun-13,native,hypolymnas anomola,0
+saipan,forbi,300,29-Jun-13,native,catopsilia pomona,0
+saipan,forbi,300,29-Jun-13,native,melanitis leda,0
+saipan,forbi,300,29-Jun-13,native,unidentified,0
+saipan,marpi,300,30-Jun-13,native,euploa eunice,0
+saipan,marpi,300,30-Jun-13,native,eurema blanda,1
+saipan,marpi,300,30-Jun-13,native,papilio polytes,0
+saipan,marpi,300,30-Jun-13,native,hypolymnas bolina,0
+saipan,marpi,300,30-Jun-13,native,hypolymnas anomola,0
+saipan,marpi,300,30-Jun-13,native,catopsilia pomona,0
+saipan,marpi,300,30-Jun-13,native,melanitis leda,0
+saipan,marpi,300,30-Jun-13,native,unidentified,0
+saipan,birdisland,300,30-Jun-13,disturbed,euploa eunice,0
+saipan,birdisland,300,30-Jun-13,disturbed,eurema blanda,0
+saipan,birdisland,300,30-Jun-13,disturbed,papilio polytes,2
+saipan,birdisland,300,30-Jun-13,disturbed,hypolymnas bolina,0
+saipan,birdisland,300,30-Jun-13,disturbed,hypolymnas anomola,0
+saipan,birdisland,300,30-Jun-13,disturbed,catopsilia pomona,0
+saipan,birdisland,300,30-Jun-13,disturbed,melanitis leda,0
+saipan,birdisland,300,30-Jun-13,disturbed,unidentified,0
+saipan,grottobike,300,30-Jun-13,disturbed,euploa eunice,0
+saipan,grottobike,300,30-Jun-13,disturbed,eurema blanda,0
+saipan,grottobike,300,30-Jun-13,disturbed,papilio polytes,0
+saipan,grottobike,300,30-Jun-13,disturbed,hypolymnas bolina,0
+saipan,grottobike,300,30-Jun-13,disturbed,hypolymnas anomola,0
+saipan,grottobike,300,30-Jun-13,disturbed,catopsilia pomona,0
+saipan,grottobike,300,30-Jun-13,disturbed,melanitis leda,0
+saipan,grottobike,300,30-Jun-13,disturbed,unidentified,0
+rota,grvp,300,10-Jul-13,native,euploa eunice,0
+rota,grvp,300,10-Jul-13,native,eurema blanda,0
+rota,grvp,300,10-Jul-13,native,papilio polytes,0
+rota,grvp,300,10-Jul-13,native,hypolymnas bolina,0
+rota,grvp,300,10-Jul-13,native,hypolymnas anomola,0
+rota,grvp,300,10-Jul-13,native,catopsilia pomona,0
+rota,grvp,300,10-Jul-13,native,melanitis leda,0
+rota,grvp,300,10-Jul-13,native,unidentified,0
+rota,birdsanctuary,300,10-Jul-13,native,euploa eunice,0
+rota,birdsanctuary,300,10-Jul-13,native,eurema blanda,0
+rota,birdsanctuary,300,10-Jul-13,native,papilio polytes,0
+rota,birdsanctuary,300,10-Jul-13,native,hypolymnas bolina,0
+rota,birdsanctuary,300,10-Jul-13,native,hypolymnas anomola,0
+rota,birdsanctuary,300,10-Jul-13,native,catopsilia pomona,0
+rota,birdsanctuary,300,10-Jul-13,native,melanitis leda,0
+rota,birdsanctuary,300,10-Jul-13,native,unidentified,0
+rota,palii,300,14-Jul-13,native,euploa eunice,0
+rota,palii,300,14-Jul-13,native,eurema blanda,0
+rota,palii,300,14-Jul-13,native,papilio polytes,2
+rota,palii,300,14-Jul-13,native,hypolymnas bolina,0
+rota,palii,300,14-Jul-13,native,hypolymnas anomola,0
+rota,palii,300,14-Jul-13,native,catopsilia pomona,0
+rota,palii,300,14-Jul-13,native,melanitis leda,0
+rota,palii,300,14-Jul-13,native,unidentified,0
+rota,tweksberry,219,17-Jul-13,disturbed,euploa eunice,0
+rota,tweksberry,219,17-Jul-13,disturbed,eurema blanda,0
+rota,tweksberry,219,17-Jul-13,disturbed,papilio polytes,0
+rota,tweksberry,219,17-Jul-13,disturbed,hypolymnas bolina,0
+rota,tweksberry,219,17-Jul-13,disturbed,hypolymnas anomola,0
+rota,tweksberry,219,17-Jul-13,disturbed,catopsilia pomona,0
+rota,tweksberry,219,17-Jul-13,disturbed,melanitis leda,0
+rota,tweksberry,219,17-Jul-13,disturbed,unidentified,0
+rota,weddingcake,250,17-Jul-13,disturbed,euploa eunice,0
+rota,weddingcake,250,17-Jul-13,disturbed,eurema blanda,0
+rota,weddingcake,250,17-Jul-13,disturbed,papilio polytes,0
+rota,weddingcake,250,17-Jul-13,disturbed,hypolymnas bolina,0
+rota,weddingcake,250,17-Jul-13,disturbed,hypolymnas anomola,0
+rota,weddingcake,250,17-Jul-13,disturbed,catopsilia pomona,0
+rota,weddingcake,250,17-Jul-13,disturbed,melanitis leda,0
+rota,weddingcake,250,17-Jul-13,disturbed,unidentified,0
+rota,isang,250,17-Jul-13,native,euploa eunice,0
+rota,isang,250,17-Jul-13,native,eurema blanda,0
+rota,isang,250,17-Jul-13,native,papilio polytes,0
+rota,isang,250,17-Jul-13,native,hypolymnas bolina,0
+rota,isang,250,17-Jul-13,native,hypolymnas anomola,0
+rota,isang,250,17-Jul-13,native,catopsilia pomona,0
+rota,isang,250,17-Jul-13,native,melanitis leda,0
+rota,isang,250,17-Jul-13,native,unidentified,0
+rota,calvo,300,17-Jul-13,disturbed,euploa eunice,0
+rota,calvo,300,17-Jul-13,disturbed,eurema blanda,0
+rota,calvo,300,17-Jul-13,disturbed,papilio polytes,0
+rota,calvo,300,17-Jul-13,disturbed,hypolymnas bolina,0
+rota,calvo,300,17-Jul-13,disturbed,hypolymnas anomola,0
+rota,calvo,300,17-Jul-13,disturbed,catopsilia pomona,0
+rota,calvo,300,17-Jul-13,disturbed,melanitis leda,0
+rota,calvo,300,17-Jul-13,disturbed,unidentified,0
+guam,twoloverspoint,300,22-Jul-13,disturbed,euploa eunice,1
+guam,twoloverspoint,300,22-Jul-13,disturbed,eurema blanda,0
+guam,twoloverspoint,300,22-Jul-13,disturbed,papilio polytes,7
+guam,twoloverspoint,300,22-Jul-13,disturbed,hypolymnas bolina,2
+guam,twoloverspoint,300,22-Jul-13,disturbed,hypolymnas anomola,0
+guam,twoloverspoint,300,22-Jul-13,disturbed,catopsilia pomona,0
+guam,twoloverspoint,300,22-Jul-13,disturbed,melanitis leda,0
+guam,twoloverspoint,300,22-Jul-13,disturbed,unidentified,0
+guam,gcc,300,23-Jul-13,native,euploa eunice,0
+guam,gcc,300,23-Jul-13,native,eurema blanda,1
+guam,gcc,300,23-Jul-13,native,papilio polytes,2
+guam,gcc,300,23-Jul-13,native,hypolymnas bolina,0
+guam,gcc,300,23-Jul-13,native,hypolymnas anomola,0
+guam,gcc,300,23-Jul-13,native,catopsilia pomona,0
+guam,gcc,300,23-Jul-13,native,melanitis leda,0
+guam,gcc,300,23-Jul-13,native,unidentified,0
+guam,pagat,300,24-Jul-13,disturbed,euploa eunice,2
+guam,pagat,300,24-Jul-13,disturbed,eurema blanda,11
+guam,pagat,300,24-Jul-13,disturbed,papilio polytes,0
+guam,pagat,300,24-Jul-13,disturbed,hypolymnas bolina,0
+guam,pagat,300,24-Jul-13,disturbed,hypolymnas anomola,4
+guam,pagat,300,24-Jul-13,disturbed,catopsilia pomona,0
+guam,pagat,300,24-Jul-13,disturbed,melanitis leda,0
+guam,pagat,300,24-Jul-13,disturbed,unidentified,0
+guam,anaon,300,24-Jul-13,native,euploa eunice,0
+guam,anaon,300,24-Jul-13,native,eurema blanda,2
+guam,anaon,300,24-Jul-13,native,papilio polytes,3
+guam,anaon,300,24-Jul-13,native,hypolymnas bolina,0
+guam,anaon,300,24-Jul-13,native,hypolymnas anomola,0
+guam,anaon,300,24-Jul-13,native,catopsilia pomona,0
+guam,anaon,300,24-Jul-13,native,melanitis leda,0
+guam,anaon,300,24-Jul-13,native,unidentified,0
+guam,sblas,300,24-Jul-13,native,euploa eunice,1
+guam,sblas,300,24-Jul-13,native,eurema blanda,0
+guam,sblas,300,24-Jul-13,native,papilio polytes,1
+guam,sblas,300,24-Jul-13,native,hypolymnas bolina,0
+guam,sblas,300,24-Jul-13,native,hypolymnas anomola,0
+guam,sblas,300,24-Jul-13,native,catopsilia pomona,0
+guam,sblas,300,24-Jul-13,native,melanitis leda,0
+guam,sblas,300,24-Jul-13,native,unidentified,0
+guam,marbod,300,4-Aug-13,disturbed,euploa eunice,7
+guam,marbod,300,4-Aug-13,disturbed,eurema blanda,3
+guam,marbod,300,4-Aug-13,disturbed,papilio polytes,24
+guam,marbod,300,4-Aug-13,disturbed,hypolymnas bolina,0
+guam,marbod,300,4-Aug-13,disturbed,hypolymnas anomola,4
+guam,marbod,300,4-Aug-13,disturbed,catopsilia pomona,0
+guam,marbod,300,4-Aug-13,disturbed,melanitis leda,0
+guam,marbod,300,4-Aug-13,disturbed,unidentified,0
+guam,marbon,250,4-Aug-13,native,euploa eunice,0
+guam,marbon,250,4-Aug-13,native,eurema blanda,4
+guam,marbon,250,4-Aug-13,native,papilio polytes,9
+guam,marbon,250,4-Aug-13,native,hypolymnas bolina,0
+guam,marbon,250,4-Aug-13,native,hypolymnas anomola,1
+guam,marbon,250,4-Aug-13,native,catopsilia pomona,0
+guam,marbon,250,4-Aug-13,native,melanitis leda,0
+guam,marbon,250,4-Aug-13,native,unidentified,0
