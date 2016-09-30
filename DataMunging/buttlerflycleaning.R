@@ -11,8 +11,8 @@ library(dplyr)
 # setwd("~/EEB_590/ClayCaterpillarProject")
 
 #Read in butterfly data
-rawbutterfly<-read_excel("C:\\Users\\brittanycavazos\\Documents\\EEB_590\\ClayCaterpillarProject\\Data\\Butterflies\\RawData\\ButterflySurveyData.xlsx", sheet = "butterflyraw")
-sitelevel<-read_excel("C:\\Users\\brittanycavazos\\Documents\\EEB_590\\ClayCaterpillarProject\\Data\\Butterflies\\RawData\\ButterflySurveyData.xlsx", sheet="SiteInfo")
+rawbutterfly<-read_excel("C:\\Users\\brittanycavazos\\Documents\\EEB_590\\ClayCaterpillarProject\\bcavazos\\Data\\Butterflies\\RawData\\ButterflySurveyData.xlsx", sheet = "butterflyraw")
+sitelevel<-read_excel("C:\\Users\\brittanycavazos\\Documents\\EEB_590\\ClayCaterpillarProject\\bcavazos\\Data\\Butterflies\\RawData\\ButterflySurveyData.xlsx", sheet="SiteInfo")
 
 # Goals: transform data to have one observation per row, assign site level information to observation by merging site level with rawbutterfly, check for anything weird goin on
 
@@ -89,4 +89,4 @@ butterflydata<-right_join(rawbutterfly, sitelevel, by = NULL) # adds in sites wi
 butterflydata$number_indiv[is.na(butterflydata$number_indiv)]<-0
 # butterfly totals would be useful - but in order to do that I need to make each survey a unique occurance, currently I can only do that with the use of multiple rows. I can create a new row that combines them together to serve as a unique identifier 
 
-# write.csv(butterflydata, "butterflydata.csv", row.names = F)
+write.csv(butterflydata, "C:\\Users\\brittanycavazos\\Documents\\EEB_590\\ClayCaterpillarProject\\bcavazos\\Data\\Butterflies\\WorkingData\\butterflydata.csv", row.names = F)

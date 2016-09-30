@@ -1,14 +1,18 @@
 ####Brittany Cavazos
 ####Caterpillar Data from Clay-Caterpillar Expt.
-####Last edited:Sept. 25, 2016
+####Last edited:Sept. 29, 2016
 ####Goal:to "clean" data for easier analysis
 ##################################################
 ##################################################
-
+library(readxl)
+library(tidyr)
+library(dplyr)
 # read in caterpillar data
 
-caterpillar<-read_excel("C:\\Users\\brittanycavazos\\Documents\\EEB_590\\ClayCaterpillarProject\\Data\\Caterpillars\\RawData\\Caterpillar Predation data.xlsx", sheet="caterpillars")
-predation<-read_excel("C:\\Users\\brittanycavazos\\Documents\\EEB_590\\ClayCaterpillarProject\\Data\\Caterpillars\\RawData\\Caterpillar Predation data.xlsx", sheet="predationID")
+caterpillar<-read_excel("C:\\Users\\brittanycavazos\\Documents\\EEB_590\\ClayCaterpillarProject\\bcavazos\\Data\\Caterpillars\\RawData\\Caterpillar Predation data.xlsx", sheet="caterpillars")
+predation<-read_excel("C:\\Users\\brittanycavazos\\Documents\\EEB_590\\ClayCaterpillarProject\\bcavazos\\Data\\Caterpillars\\RawData\\Caterpillar Predation data.xlsx", sheet="predationID", col_types=c("text", "text", "text", "text", "text", "text", "text", "text"))
+# ^ had a problem w/ predation data with read_excel - had to add the col_types w/ 8 "text"s to have it read the number column as non-numeric # it worked! even though they are all characters now...
+
 
 str(caterpillar)
 unique(caterpillar$result)
@@ -29,17 +33,21 @@ caterpillar<-caterpillar[,-8]
 names(caterpillar)
 
 names(predation)
-# first let's take out the ones that were mislabeled (the only ones with notes written beside them)
+# get rid of two empty columns
+predation<-predation[,1:6]
+# first let's take out the ones that were mislabeled (these were ones that appeared to be assigned predation categories, but were marked as unpredated in caterpillars spreadsheet - that spreadsheet has been datachecked so these must be mislabeled)
 predation<-predation[is.na(predation$Notes==T),]
+# now we can take out the notes column because it's irrelevant 
 predation<-predation[,1:5]
+
 names(predation)<-tolower(names(predation))
 str(predation)
 predation$island<-as.factor(tolower(predation$island))
 predation$habitat<-as.factor(tolower(predation$habitat))
 predation$site<-as.factor(tolower(predation$site))
 
-summary(predation$habitat)
-# why is there a leucana = disturbed
+levels(predation$habitat)
+# leucana = disturbed
 predation$habitat <- gsub("leucana", "disturbed",predation$habitat)
 # we also need to change the names around in site so they match each other
 # in caterpillars - change anao to anao_n, ladtdn to ladt_n, marbo to marbo_d
@@ -59,12 +67,6 @@ unique(caterpillar$site)
 unique(predation$site)
 
 #now merging them should work better -- before it was just assigning NAs to predation type even if event had occured
-
-summary(predation$number)
-# it seemed to have turned the weird ones (seemingly two pieces of the same individual that were predated on into NAs - there were two seperate occurances of this, the two pieces were labeled #a and #b) 
-# I should decide whether to just leave them out altogether or assign them as one predation event
-# for now I'll take them out
-predation<-predation[!is.na(predation$number),]
 
 summary(as.factor(predation$type))
 # again, here there are some weird things - 41 occurances of a * (unrecognizable predation marking) and 9 occurances of "??" (predation in question); there are also 6 "NP"s, which are no predations - so I'll be taking those out for sure
@@ -89,6 +91,6 @@ caterpillar$uniqueID<-paste(caterpillar$site, caterpillar$habitat, caterpillar$n
 # so at this point, if we were to merge, we would want 1522 observations and 8 variables
 
 caterpillardata<-left_join(caterpillar, predation, by = NULL)
-# this looks correct
+# this worked
 
-# write.csv(caterpillardata, "caterpillardata.csv", row.names = F)
+write.csv(caterpillardata, "C:\\Users\\brittanycavazos\\Documents\\EEB_590\\ClayCaterpillarProject\\bcavazos\\Data\\Caterpillars\\WorkingData\\caterpillardata.csv", row.names = F)
