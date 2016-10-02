@@ -1,12 +1,27 @@
 ##########################################################################
 #### Brittany Cavazos
-#### September 25, 2016
 #### Preliminary analysis of clay catipillar results and butterfly survey
-#### Last edited September 25, 2016
+#### Last edited October 1, 2016
 ##########################################################################
 ##########################################################################
 
-###Butterfly Survey prelim analysis###
+### Big questions ###
+# What are the effects on herbivorous arthropod populations, specifically butterflies, in the absence of birds?
+#    a. Is there an increased abundance of butterflies on Guam, which has no insectivorous forest birds, compared to Saipan and Rota, which do have insectivorous forest birds?
+#    b. Are rates of herbivorous arthropod predation higher on Saipan and Rota than on Guam?
+
+
+library(dplyr)
+library(ggplot2)
+library(bbmle)
+library(tidyr)
+library(lme4)
+library(vegan)
+###Butterfly Survey preliminary analysis###
+
+# read in the cleaned up data files
+butterflydata <- read.csv("C:\\Users\\brittanycavazos\\Documents\\EEB_590\\ClayCaterpillarProject\\bcavazos\\Data\\Butterflies\\WorkingData\\butterflydata.csv")
+caterpillardata <- read.csv("C:\\Users\\brittanycavazos\\Documents\\EEB_590\\ClayCaterpillarProject\\bcavazos\\Data\\Caterpillars\\WorkingData\\caterpillardata.csv")
 
 # first we can make another column for total butterflies per site
 
@@ -15,48 +30,68 @@ tot_butterfly <- aggregate(butterflydata$number_indiv, by = list(butterflydata$s
 colnames(tot_butterfly)<-c("site","total_butterfly")
 butterflydata<-left_join(butterflydata, tot_butterfly, by=NULL)
 
+# make bird column (guam = no, saipan & rota = yes)
+butterflydata$bird<-ifelse(butterflydata$island=="guam","no","yes")
+
+# fix duration time to be numerically meaningful
+butterflydata<-separate(butterflydata, col=duration, into=c("min", "sec"), sep=" ", remove=F)
+#using substr- this is saying "keep the 4th element (start at 4, stop at 4)". 
+butterflydata$min<-as.numeric(substr(butterflydata$min, 1, nchar(butterflydata$min)-3))
+butterflydata$sec<-as.numeric(substr(butterflydata$sec, 1, nchar(butterflydata$sec)-3))
+butterflydata$sec<-butterflydata$sec/60
+butterflydata$duration<-butterflydata$min+butterflydata$sec
+
+meanperisland <- aggregate(butterflydata$number_indiv, by = list(butterflydata$island), FUN="mean")
+
 # change to factors so we can graph
 str(butterflydata)
 butterflydata$island<-as.factor(butterflydata$island)
 butterflydata$site<-as.factor(butterflydata$site)
 butterflydata$type<-as.factor(butterflydata$type)
 
-boxplot(total_butterfly~island, data=butterflydata)
-boxplot(total_butterfly~site, data=butterflydata)
+# total butterfly is not normally distributed, logging doesn't really help at all - use poisson distribution in glm
+hist((butterflydata$total_butterfly))
+hist(log(butterflydata$total_butterfly))
+
+butterflydata$duration<-as.integer(butterflydata$duration)
+
+# butterfly.model1 <- glm(total_butterfly ~ bird, data=butterflydata, family="poisson")
+# butterfly.model2 <- glm(total_butterfly ~ type, data=butterflydata, family="poisson")
+butterfly.model3 <- glm(total_butterfly ~ duration, data=butterflydata, family="poisson")
+butterfly.model4 <- glm(total_butterfly ~ bird*type, data=butterflydata, family="poisson")
+# butterfly.model5 <- glm(total_butterfly ~ bird+type, data=butterflydata, family="poisson")
+# butterfly.model6 <- glmer(total_butterfly ~ bird*type+duration + (1|site), data=butterflydata, family="poisson")
+butterfly.model7 <- glm(total_butterfly ~ bird*type*duration, data=butterflydata, family="poisson")
+butterfly.model8 <- glm(total_butterfly ~ duration*type, data=butterflydata, family="poisson")
+butterfly.model9 <- glm(total_butterfly ~ duration+type, data=butterflydata, family="poisson")
 
 
+AICtab(butterfly.model1,butterfly.model2,butterfly.model3,butterfly.model4) # Likelihood ratio test, best model is model 1 
 
-hist(butterflydata$total_butterfly)
-
-coplot(total_butterfly~ site | type, data=butterflydata)
-
-
-plot(butterflydata$type, butterflydata$total_butterfly) 
-plot(butterflydata$island, butterflydata$total_butterfly)
+butterflydata$bird<-as.factor(butterflydata$bird)
+plot(total_butterfly~bird*type, data=butterflydata)
 
 
-library(ggplot2)
-#histogram - use only a single continuous x value
-ggplot(butterflydata, aes(total_butterfly))+
-  geom_histogram()
+#overdispersion- need to correct for it - either use a quasi-poisson? or add 
+#observation-level random effect, or check zero-inflated poisson
+# Is there a difference in species diversity between islands with and without birds? ###
+#use vegan package for ordination? 
+#calculate shannon-weiner index of diversity? - best to do in vegan
 
-#boxplot
+###graphing butterflies
+ggplot(butterflydata, aes(bird,total_butterfly, fill=type))+
+  geom_boxplot()+
+  theme_bw()+
+  ggtitle("Total number of butterflies by forest type and bird presence")
+
 ggplot(butterflydata, aes(type, total_butterfly))+
-  geom_boxplot() #plot response and predictors, continuous data
+  geom_boxplot()+
+  facet_grid(.~species_name, "free")
 
-#create different boxplots for each island
-a<-(ggplot(butterflydata, aes(island, total_butterfly, color=type))+
-      geom_boxplot()+
-      theme_classic()+
-      ggtitle("title"))
-a + theme_bw
 
-#add facet_grid to show other variables
-#ggplot(transplant2, aes(websize, duration))+
-  #geom_point()+
-  #facet_grid(netting~island)+
-  #theme_minimal()+
-  #ggtitle("title")
+#######################################################3333333
+##############################################################
+
 
 ###Caterpillar analysis###
 
