@@ -105,13 +105,23 @@ prop_pred <- aggregate(caterpillardata$result, by = list(caterpillardata$site), 
 colnames(prop_pred)<-c("site","prop_pred")
 caterpillardata<-left_join(caterpillardata, prop_pred, by=NULL)
 
+caterpillardata$bird<-ifelse(caterpillardata$island=="guam","no","yes")
+
+
 caterpillardata$prop_pred<-as.numeric(caterpillardata$prop_pred)
 caterpillardata$site<-as.factor(caterpillardata$site)
+caterpillardata$bird<-as.factor(caterpillardata$bird)
+
+summary(caterpillardata$prop_pred)
 hist(caterpillardata$prop_pred)
-plot(prop_pred~island, data=caterpillardata)
+plot(prop_pred~bird, data=caterpillardata)
 plot(prop_pred~habitat, data=caterpillardata)
 
 
-names(caterpillardata)
+# assign biological significance to predation score
+index<-c("*","??","A","B","C","D","E","F","G","H","I","J","L","M","N","NP","O","P")
+values<-c("unknown","unknown","arthropod","arthropod","lizard","lizard","small mammal","arthropod","bird","arthropod","arthropod","arthropod","bird","small mammal","unknown","unknown","arthropod","small mammal")
+
+caterpillardata$predator<- values[match(caterpillardata$type, index)]
 
 
