@@ -81,6 +81,15 @@ sitelevel$site <- gsub("naftan point", "naftan",sitelevel$site)
 sitelevel$site[sitelevel$site=="ladt" & sitelevel$type=="native"] <- "latd_n"
 sitelevel$site[sitelevel$site=="ladt" & sitelevel$type=="disturbed"] <- "ladt_d"
 
+
+# fix duration in sitelevel time to be numerically meaningful
+sitelevel<-separate(sitelevel, col=duration, into=c("min", "sec"), sep=" ", remove=F)
+#using substr- this is saying "keep the 4th element (start at 4, stop at 4)". 
+sitelevel$min<-as.numeric(substr(sitelevel$min, 1, nchar(sitelevel$min)-3))
+sitelevel$sec<-as.numeric(substr(sitelevel$sec, 1, nchar(sitelevel$sec)-3))
+sitelevel$sec<-sitelevel$sec/60
+sitelevel$duration<-sitelevel$min+sitelevel$sec
+
 # now we can merge these two together without it freaking out about names
 # so we want island, site type and distance to merge to add  should all match - five more columns should be added to make 29x11 final datasheet
 

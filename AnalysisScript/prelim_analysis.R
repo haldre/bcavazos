@@ -33,13 +33,6 @@ butterflydata<-left_join(butterflydata, tot_butterfly, by=NULL)
 # make bird column (guam = no, saipan & rota = yes)
 butterflydata$bird<-ifelse(butterflydata$island=="guam","no","yes")
 
-# fix duration time to be numerically meaningful
-butterflydata<-separate(butterflydata, col=duration, into=c("min", "sec"), sep=" ", remove=F)
-#using substr- this is saying "keep the 4th element (start at 4, stop at 4)". 
-butterflydata$min<-as.numeric(substr(butterflydata$min, 1, nchar(butterflydata$min)-3))
-butterflydata$sec<-as.numeric(substr(butterflydata$sec, 1, nchar(butterflydata$sec)-3))
-butterflydata$sec<-butterflydata$sec/60
-butterflydata$duration<-butterflydata$min+butterflydata$sec
 
 meanperisland <- aggregate(butterflydata$number_indiv, by = list(butterflydata$island), FUN="mean")
 
