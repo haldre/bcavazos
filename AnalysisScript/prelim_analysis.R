@@ -1,7 +1,7 @@
 ##########################################################################
 #### Brittany Cavazos
 #### Preliminary analysis of clay catipillar results and butterfly survey
-#### Last edited October 1, 2016
+#### Last edited October 10, 2016
 ##########################################################################
 ##########################################################################
 
@@ -32,9 +32,10 @@ butterflydata<-left_join(butterflydata, tot_butterfly, by=NULL)
 
 # make bird column (guam = no, saipan & rota = yes)
 butterflydata$bird<-ifelse(butterflydata$island=="guam","no","yes")
-
+# although after talking to H, we may want to look at islands instead of birds because there is a bit of a gradients between islands
 
 meanperisland <- aggregate(butterflydata$number_indiv, by = list(butterflydata$island), FUN="mean")
+
 
 # change to factors so we can graph
 str(butterflydata)
@@ -42,40 +43,49 @@ butterflydata$island<-as.factor(butterflydata$island)
 butterflydata$site<-as.factor(butterflydata$site)
 butterflydata$type<-as.factor(butterflydata$type)
 
-# total butterfly is not normally distributed, logging doesn't really help at all - use poisson distribution in glm
+# total butterfly is not normally distributed, logging doesn't really help at all - use poisson distribution in glmer
 hist((butterflydata$total_butterfly))
 hist(log(butterflydata$total_butterfly))
 
 butterflydata$duration<-as.integer(butterflydata$duration)
 
-# butterfly.model1 <- glm(total_butterfly ~ bird, data=butterflydata, family="poisson")
-# butterfly.model2 <- glm(total_butterfly ~ type, data=butterflydata, family="poisson")
-butterfly.model3 <- glm(total_butterfly ~ duration, data=butterflydata, family="poisson")
-butterfly.model4 <- glm(total_butterfly ~ bird*type, data=butterflydata, family="poisson")
-# butterfly.model5 <- glm(total_butterfly ~ bird+type, data=butterflydata, family="poisson")
-# butterfly.model6 <- glmer(total_butterfly ~ bird*type+duration + (1|site), data=butterflydata, family="poisson")
-butterfly.model7 <- glm(total_butterfly ~ bird*type*duration, data=butterflydata, family="poisson")
-butterfly.model8 <- glm(total_butterfly ~ duration*type, data=butterflydata, family="poisson")
-butterfly.model9 <- glm(total_butterfly ~ duration+type, data=butterflydata, family="poisson")
+butterfly.model1 <- glmer(total_butterfly ~ island+(1|site), data=butterflydata, family="poisson") # best model
+# butterfly.model2 <- glmer(total_butterfly ~ type+(1|site), data=butterflydata, family="poisson") # bad model, take out 
+# butterfly.model3 <- glmer(total_butterfly ~ duration+(1|site), data=butterflydata, family="poisson") # bad model, take out
+# butterfly.model4 <- glmer(total_butterfly ~ type*island+(1|site), data=butterflydata, family="poisson") # runs with a warning
+butterfly.model5 <- glmer(total_butterfly ~ type+island+(1|site), data=butterflydata, family="poisson") # second best model
+# butterfly.model6 <- glmer(total_butterfly ~ type*duration+(1|site), data=butterflydata, family="poisson") # bad model, take out
+# butterfly.model7 <- glmer(total_butterfly ~ type+duration+(1|site), data=butterflydata, family="poisson") # bad model, take out
+butterfly.model8 <- glmer(total_butterfly ~ island*duration+(1|site), data=butterflydata, family="poisson")
+butterfly.model9 <- glmer(total_butterfly ~ island+duration+(1|site), data=butterflydata, family="poisson")
+#butterfly.model10 <- glmer(total_butterfly ~ island*type+duration+(1|site), data=butterflydata, family="poisson") #runs with a warning
+butterfly.model11 <- glmer(total_butterfly ~ island+type*duration+(1|site), data=butterflydata, family="poisson")
+#butterfly.model12 <- glmer(total_butterfly ~ island*type*duration+(1|site), data=butterflydata, family="poisson") # runs with a warning
 
-
-AICtab(butterfly.model1,butterfly.model2,butterfly.model3,butterfly.model4) # Likelihood ratio test, best model is model 1 
+AICtab(butterfly.model1, butterfly.model5, butterfly.model4, weights=T) 
+AICtab(butterfly.model1, butterfly.model5, butterfly.model8,butterfly.model9, butterfly.model11, weights=T) # Likelihood ratio test, best model is...a tie between model 1 and 5 - consider model averaging
+AIC(butterfly.model1, butterfly.model5)
 
 butterflydata$bird<-as.factor(butterflydata$bird)
 plot(total_butterfly~bird*type, data=butterflydata)
 
+###
+# number of sites are different - consider converting to avg number butterflies per site
+###
 
+##notes from H
 #overdispersion- need to correct for it - either use a quasi-poisson? or add 
 #observation-level random effect, or check zero-inflated poisson
 # Is there a difference in species diversity between islands with and without birds? ###
 #use vegan package for ordination? 
 #calculate shannon-weiner index of diversity? - best to do in vegan
+##
 
 ###graphing butterflies
-ggplot(butterflydata, aes(bird,total_butterfly, fill=type))+
+ggplot(butterflydata, aes(island,total_butterfly, fill=type))+
   geom_boxplot()+
   theme_bw()+
-  ggtitle("Total number of butterflies by forest type and bird presence")
+  ggtitle("Total number of butterflies by forest type and island")
 
 ggplot(butterflydata, aes(type, total_butterfly))+
   geom_boxplot()+
