@@ -81,11 +81,11 @@ ggplot(butterflydata, aes(type, total_butterfly))+
   facet_grid(.~species_name, "free")
 
 
-# trying to look at comm comp.
+# trying to look at comm comp.... haven't totally figured it out yet
 
 butterflydata$comm<-butterflydata$number_indiv/butterflydata$total_butterfly
 test<-dcast(butterflydata, island + type + site~species_name)
-ord<- metaMDS()
+# ord<- metaMDS()
 # Use ddply to sum cact.count and reproductive status
 
 #######################################################3333333
