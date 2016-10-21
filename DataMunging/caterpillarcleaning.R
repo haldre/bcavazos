@@ -9,8 +9,8 @@ library(tidyr)
 library(dplyr)
 # read in caterpillar data
 
-caterpillar<-read_excel("C:\\Users\\brittanycavazos\\Documents\\EEB_590\\ClayCaterpillarProject\\bcavazos\\Data\\Caterpillars\\RawData\\Caterpillar Predation data.xlsx", sheet="caterpillars")
-predation<-read_excel("C:\\Users\\brittanycavazos\\Documents\\EEB_590\\ClayCaterpillarProject\\bcavazos\\Data\\Caterpillars\\RawData\\Caterpillar Predation data.xlsx", sheet="predationID", col_types=c("text", "text", "text", "text", "text", "text", "text", "text"))
+caterpillar<-read_excel("C:\\Users\\brittanycavazos\\Documents\\Fall 2016\\EEB_590\\ClayCaterpillarProject\\bcavazos\\Data\\Caterpillars\\RawData\\Caterpillar Predation data.xlsx", sheet="caterpillars")
+predation<-read_excel("C:\\Users\\brittanycavazos\\Documents\\Fall 2016\\EEB_590\\ClayCaterpillarProject\\bcavazos\\Data\\Caterpillars\\RawData\\Caterpillar Predation data.xlsx", sheet="predationID", col_types=c("text", "text", "text", "text", "text", "text", "text", "text"))
 # ^ had a problem w/ predation data with read_excel - had to add the col_types w/ 8 "text"s to have it read the number column as non-numeric # it worked! even though they are all characters now...
 
 

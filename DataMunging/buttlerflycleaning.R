@@ -11,8 +11,8 @@ library(dplyr)
 # setwd("~/EEB_590/ClayCaterpillarProject")
 
 #Read in butterfly data
-rawbutterfly<-read_excel("C:\\Users\\brittanycavazos\\Documents\\EEB_590\\ClayCaterpillarProject\\bcavazos\\Data\\Butterflies\\RawData\\ButterflySurveyData.xlsx", sheet = "butterflyraw")
-sitelevel<-read_excel("C:\\Users\\brittanycavazos\\Documents\\EEB_590\\ClayCaterpillarProject\\bcavazos\\Data\\Butterflies\\RawData\\ButterflySurveyData.xlsx", sheet="SiteInfo")
+rawbutterfly<-read_excel("C:\\Users\\brittanycavazos\\Documents\\Fall 2016\\EEB_590\\ClayCaterpillarProject\\bcavazos\\Data\\Butterflies\\RawData\\ButterflySurveyData.xlsx", sheet = "butterflyraw")
+sitelevel<-read_excel("C:\\Users\\brittanycavazos\\Documents\\Fall 2016\\EEB_590\\ClayCaterpillarProject\\bcavazos\\Data\\Butterflies\\RawData\\ButterflySurveyData.xlsx", sheet="SiteInfo")
 
 # Goals: transform data to have one observation per row, assign site level information to observation by merging site level with rawbutterfly, check for anything weird goin on
 
